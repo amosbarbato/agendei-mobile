@@ -2,7 +2,7 @@ import icon from "@/constants/icon";
 import { Image, Text, View } from "react-native";
 import { Button } from "../button";
 import { styles } from "./style";
-import { formatDate } from "@/utils/format-date";
+import { formatDate } from "@/utils/format";
 
 interface CardAppointmentProps {
   id_appointment: number,
