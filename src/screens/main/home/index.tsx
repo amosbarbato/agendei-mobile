@@ -2,7 +2,7 @@ import { FlatList, Text, View } from "react-native";
 import { doctors } from "@/constants/data";
 import { CardDoctor } from "@/components/doctor";
 import icon from "@/constants/icon";
-import { styles } from "./styles";
+import { styles } from "./style";
 
 export function Home() {
   return (

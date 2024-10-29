@@ -3,8 +3,8 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   profile: {
+    backgroundColor: color.white,
     flex: 1,
-    paddingTop: 10,
   },
   container: {
     paddingHorizontal: 20,
