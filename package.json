@@ -12,6 +12,7 @@
     "@react-native-picker/picker": "^2.9.0",
     "@react-navigation/bottom-tabs": "^6.6.1",
     "@react-navigation/native": "^6.1.18",
+    "@react-navigation/native-stack": "^6.11.0",
     "@types/react-native-calendars": "^1.1264.7",
     "expo": "~51.0.28",
     "expo-status-bar": "~1.12.1",
