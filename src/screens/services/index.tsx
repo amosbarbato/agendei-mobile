@@ -4,7 +4,14 @@ import { FlatList, Image, Text, View } from "react-native";
 import { styles } from "./style";
 import { doctors_services } from "@/constants/data";
 
-export function Services() {
+export function Services({ navigation }: any) {
+
+  function handleClick(id_service: number) {
+    navigation.navigate("schedule")
+
+    console.log("Clicou: " + id_service)
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.banner}>
@@ -23,6 +30,7 @@ export function Services() {
               id_service={item.id_service}
               service={item.description}
               price={item.price}
+              onPress={() => handleClick(item.id_service)}
             />
           )
         }}
