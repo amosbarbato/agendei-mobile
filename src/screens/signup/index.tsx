@@ -4,10 +4,15 @@ import { styles } from "./style";
 import { useState } from "react";
 import { Button } from "@/components/button";
 
-export function Signup() {
+export function Signup({ navigation }: any) {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+  function handleClick() {
+    navigation.navigate("login")
+    console.log("Fazer Login")
+  }
 
   return (
     <View style={styles.container}>
@@ -42,7 +47,7 @@ export function Signup() {
 
       <View style={styles.footer}>
         <Text>Já tenho uma conta. </Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={handleClick}>
           <Text style={styles.footerLink}>Fazer login.</Text>
         </TouchableOpacity>
       </View>

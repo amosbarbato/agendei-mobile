@@ -9,9 +9,16 @@ import { Button } from "@/components/button";
 LocaleConfig.locales["pt-BR"] = ptBR;
 LocaleConfig.defaultLocale = "pt-BR";
 
-export function Schedule() {
+export function Schedule({ route }: any) {
   const [day, setDay] = useState<DateData>()
   const [hour, setHour] = useState('')
+  const id_doctor = route.params.id_doctor
+  const id_service = route.params.id_doctor
+
+
+  function handleClick() {
+    console.log(id_doctor, id_service, day, hour)
+  }
 
   return (
     <View style={styles.container}>
@@ -42,7 +49,7 @@ export function Schedule() {
         </View>
 
         <View>
-          <Button text="Confirmar reserva" />
+          <Button text="Confirmar reserva" onPress={handleClick} />
         </View>
       </View>
     </View>
