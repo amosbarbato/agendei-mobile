@@ -4,17 +4,14 @@ import { styles } from "./style"
 interface ButtonProps {
   text: string
   variant?: 'primary' | 'danger'
+  onPress?: () => void
 }
 
-export function Button({ text, variant = 'primary' }: ButtonProps) {
-
-  function TesteClick() {
-    Alert.alert("Clicou no nosso botão");
-  }
+export function Button({ text, variant = 'primary', onPress }: ButtonProps) {
   return (
     <TouchableOpacity
       style={[styles.button, variant == "danger" ? styles.danger : styles.primary]}
-      onPress={TesteClick}
+      onPress={onPress}
     >
       <Text style={styles.text}>{text}</Text>
     </TouchableOpacity>
