@@ -4,9 +4,14 @@ import { styles } from "./style";
 import { useState } from "react";
 import { Button } from "@/components/button";
 
-export function Login() {
+export function Login({ navigation }: any) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+  function handleClick() {
+    navigation.navigate("signup")
+    console.log("Criar conta agora")
+  }
 
   return(
     <View style={styles.container}>
@@ -35,7 +40,7 @@ export function Login() {
 
       <View style={styles.footer}>
         <Text>Não tenho conta. </Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={handleClick}>
           <Text style={styles.footerLink}>Criar conta agora.</Text>
         </TouchableOpacity>
       </View>

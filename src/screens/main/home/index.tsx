@@ -6,7 +6,9 @@ import { styles } from "./style";
 export function Home({ navigation }: any) {
 
   function handleClick(id_doctor: number, name: string, specialty: string, icon: string) {
-    navigation.navigate("services")
+    navigation.navigate("services", {
+      id_doctor, name, specialty, icon
+    })
 
     console.log(id_doctor, name, specialty, icon)
   }
