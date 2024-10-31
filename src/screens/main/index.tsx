@@ -2,7 +2,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Calendar } from "./calendar";
 import { Home } from "./home";
 import { Profile } from "./profile";
-import { NavigationContainer } from "@react-navigation/native";
 import { Image } from "react-native";
 import icon from "@/constants/icon";
 import { color } from "@/constants/theme";
@@ -11,7 +10,6 @@ const Tab = createBottomTabNavigator()
 
 export function Main() {
   return (
-    <NavigationContainer>
       <Tab.Navigator>
         <Tab.Screen
           name="Home"
@@ -78,7 +76,6 @@ export function Main() {
           }}
         />
 
-      </Tab.Navigator>
-    </NavigationContainer>
+    </Tab.Navigator>
   )
 }
