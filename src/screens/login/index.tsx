@@ -1,12 +1,31 @@
-import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { useState } from "react";
+import { Alert, Image, Text, TextInput, TouchableOpacity, View } from "react-native";
+import api from "@/constants/api";
+import { Button } from "@/components/button";
 import logo from "@/assets/logo.png"
 import { styles } from "./style";
-import { useState } from "react";
-import { Button } from "@/components/button";
 
 export function Login({ navigation }: any) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+  async function goToLogin() {
+    try {
+      const response = await api.post("/users/login", {
+        email, password
+      })
+
+      if (response.data) {
+        console.log(response.data)
+      }
+    }
+    catch (error: any) {
+      if (error.response?.data.error)
+        Alert.alert(error.response.data.error)
+      else
+        Alert.alert("Ocorre um erro. Tente novamente mais tarde.")
+    }
+  }
 
   function handleClick() {
     navigation.navigate("signup")
@@ -35,7 +54,7 @@ export function Login({ navigation }: any) {
             onChangeText={setPassword}
           />
         </View>
-        <Button text="Acessar" />
+        <Button text="Acessar" onPress={goToLogin} />
       </View>
 
       <View style={styles.footer}>
