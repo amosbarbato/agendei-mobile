@@ -1,20 +1,16 @@
-import icon from "@/constants/icon";
 import { Image, Text, View } from "react-native";
+import icon from "@/constants/icon";
 import { Button } from "../button";
-import { styles } from "./style";
+import { Appointment } from "@/utils/interfaces";
 import { formatDate } from "@/utils/format";
+import { styles } from "./style";
 
-interface CardAppointmentProps {
-  id_appointment: number,
-  service: string,
-  doctor: string,
-  specialty: string,
-  booking_date: string,
-  booking_hour: string,
+interface CardAppointmentProps extends Appointment {
+  onPress: (id_appointment: number) => void
 }
 
 export function CardAppointment({
-  id_appointment, service, doctor, specialty, booking_date, booking_hour
+  id_appointment, service, doctor, specialty, booking_date, booking_hour, onPress
 }: CardAppointmentProps) {
   return (
     <View style={styles.appointment}>
@@ -34,7 +30,11 @@ export function CardAppointment({
           </View>
         </View>
         <View>
-          <Button text="Cancelar Reserva" variant="danger" />
+          <Button
+            text="Cancelar Reserva"
+            variant="danger"
+            onPress={() => onPress(id_appointment)}
+          />
         </View>
       </View>
     </View>
