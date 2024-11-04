@@ -1,18 +1,16 @@
 import { Text, View } from "react-native";
-import { styles } from "./styles";
-import { Button } from "../button";
 import { formatPrice } from "@/utils/format";
+import { Service } from "@/utils/interfaces";
+import { Button } from "../button";
+import { styles } from "./styles";
 
-interface CardServiceProps {
-  id_service: number
-  service: string
-  price: number
+interface ServiceProps extends Service {
   onPress: () => void
 }
 
-export function CardService({ service, price, onPress }: CardServiceProps) {
+export function CardService({ id_service, service, price, onPress }: ServiceProps) {
   return (
-    <View style={styles.container}>
+    <View style={styles.container} key={id_service}>
       <View style={styles.containerService}>
         <Text style={styles.service}>{service}</Text>
         <Text style={styles.price}>{formatPrice(price)}</Text>
