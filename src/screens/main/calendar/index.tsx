@@ -1,15 +1,15 @@
-import { CardAppointment } from "@/components/appointment";
-import { appointments } from "@/constants/data";
 import { FlatList, View } from "react-native";
+import { CardAppointment } from "@/components/appointment";
+import { useAppointments } from "@/hooks/useAppointments";
 import { styles } from "./style";
 
 export function Calendar() {
-  return (
-    <View style={styles.container}>
+  const { appointments, deleteAppointments } = useAppointments()
 
+  return (   
+    <View style={styles.container}>
       <FlatList
         data={appointments}
-        keyExtractor={(doctor) => doctor.id_appointment.toString()}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => {
           return (
@@ -20,6 +20,7 @@ export function Calendar() {
               specialty={item.specialty}
               booking_date={item.booking_date}
               booking_hour={item.booking_hour}
+              onPress={() => deleteAppointments(item.id_appointment)}
             />
           )
         }}
