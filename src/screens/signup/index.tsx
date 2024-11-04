@@ -1,37 +1,20 @@
-import { useState } from "react";
-import { Alert, Image, Text, TextInput, TouchableOpacity, View } from "react-native";
-import api from "@/constants/api";
+import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { useSignup } from "@/hooks/useSignup";
 import { Button } from "@/components/button";
 import logo from "@/assets/logo.png"
 import { styles } from "./style";
 
 export function Signup({ navigation }: any) {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-
-  async function goToSign() {
-    try {
-      const response = await api.post("/users/register", {
-        name, email, password
-      })
-
-      if (response.data) {
-        console.log(response.data)
-      }
-    }
-    catch (error: any) {
-      if (error.response?.data.error)
-        Alert.alert(error.response.data.error)
-      else
-        Alert.alert("Ocorre um erro. Tente novamente mais tarde.")
-    }
-  }
-
-  function handleClick() {
-    navigation.navigate("login")
-    console.log("Fazer Login")
-  }
+  const {
+    name,
+    setName,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    handleSignup,
+    navigateToLogin
+  } = useSignup(navigation)
 
   return (
     <View style={styles.container}>
@@ -61,12 +44,12 @@ export function Signup({ navigation }: any) {
             onChangeText={setPassword}
           />
         </View>
-        <Button text="Criar Conta" onPress={goToSign} />
+        <Button text="Criar Conta" onPress={handleSignup} />
       </View>
 
       <View style={styles.footer}>
         <Text>Já tenho uma conta. </Text>
-        <TouchableOpacity onPress={handleClick}>
+        <TouchableOpacity onPress={navigateToLogin}>
           <Text style={styles.footerLink}>Fazer login.</Text>
         </TouchableOpacity>
       </View>
