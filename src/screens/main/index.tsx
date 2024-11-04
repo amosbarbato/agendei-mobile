@@ -45,6 +45,7 @@ export function Main() {
             headerTintColor: `${color.primary}`,
             headerShadowVisible: true,
             tabBarShowLabel: false,
+            unmountOnBlur: true,
             tabBarIcon: ({ focused }) => {
               return (
                 <Image
