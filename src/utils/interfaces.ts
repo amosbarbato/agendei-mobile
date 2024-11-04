@@ -7,7 +7,8 @@ export interface Doctor {
 
 export interface Service {
   id_service: number;
-  description: string;
+  service?: string;
+  description?: string,
   price: number;
 }
 
