@@ -1,6 +1,6 @@
 import { FlatList, View } from "react-native";
-import { CardAppointment } from "@/components/appointment";
 import { useAppointments } from "@/hooks/useAppointments";
+import { CardAppointment } from "@/components/appointment";
 import { styles } from "./style";
 
 export function Calendar() {

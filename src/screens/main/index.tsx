@@ -1,10 +1,10 @@
+import { Image } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import icon from "@/constants/icon";
+import { color } from "@/constants/theme";
 import { Calendar } from "./calendar";
 import { Home } from "./home";
 import { Profile } from "./profile";
-import { Image } from "react-native";
-import icon from "@/constants/icon";
-import { color } from "@/constants/theme";
 
 const Tab = createBottomTabNavigator()
 
@@ -20,16 +20,17 @@ export function Main() {
               return (
                 <Image
                   source={icon.logo}
-                  style={{ width: 140, height: 32, }}
+                  style={{ marginTop: 20, width: 140, height: 32, }}
                 />
               )
             },
+            tabBarStyle: { height: 60 },
             tabBarShowLabel: false,
             tabBarIcon: ({ focused }) => {
               return (
                 <Image
                   source={icon.home}
-                  style={{ width: 45, height: 45, opacity: focused ? 1 : 0.3 }}
+                  style={{ width: 40, height: 40, opacity: focused ? 1 : 0.3 }}
                 />
               )
             }
@@ -46,11 +47,12 @@ export function Main() {
             headerShadowVisible: true,
             tabBarShowLabel: false,
             unmountOnBlur: true,
+            tabBarStyle: { height: 60 },
             tabBarIcon: ({ focused }) => {
               return (
                 <Image
                   source={icon.calendar}
-                  style={{ width: 45, height: 45, opacity: focused ? 1 : 0.3 }}
+                  style={{ width: 40, height: 40, opacity: focused ? 1 : 0.3 }}
                 />
               )
             }
@@ -66,11 +68,12 @@ export function Main() {
             headerTintColor: `${color.primary}`,
             headerShadowVisible: true,
             tabBarShowLabel: false,
+            tabBarStyle: { height: 60 },
             tabBarIcon: ({ focused }) => {
               return (
                 <Image
                   source={icon.profile}
-                  style={{ width: 45, height: 45, opacity: focused ? 1 : 0.3 }}
+                  style={{ width: 40, height: 40, opacity: focused ? 1 : 0.3 }}
                 />
               )
             }

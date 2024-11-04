@@ -1,8 +1,7 @@
-import { Alert, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import { Calendar, LocaleConfig } from "react-native-calendars";
 import { Picker } from "@react-native-picker/picker";
 import { useBooking } from "@/hooks/useBooking";
-import api from "@/constants/api";
 import { ptBR } from "@/constants/calendar";
 import { Button } from "@/components/button";
 import { styles, theme } from "./style";

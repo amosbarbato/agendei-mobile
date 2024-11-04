@@ -1,17 +1,17 @@
 import { Image, Text, View } from "react-native";
-import icon from "@/constants/icon";
-import { Button } from "../button";
 import { Appointment } from "@/utils/interfaces";
 import { formatDate } from "@/utils/format";
+import icon from "@/constants/icon";
+import { Button } from "../button";
 import { styles } from "./style";
 
-interface CardAppointmentProps extends Appointment {
+interface AppointmentProps extends Appointment {
   onPress: (id_appointment: number) => void
 }
 
 export function CardAppointment({
   id_appointment, service, doctor, specialty, booking_date, booking_hour, onPress
-}: CardAppointmentProps) {
+}: AppointmentProps) {
   return (
     <View style={styles.appointment}>
       <Text style={styles.name}>{service} - {doctor}</Text>
