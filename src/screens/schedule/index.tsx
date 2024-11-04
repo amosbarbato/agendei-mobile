@@ -1,45 +1,41 @@
-import { ptBR } from "@/constants/calendar";
-import { Text, View } from "react-native";
-import { Calendar, CalendarProps, type DateData, LocaleConfig } from "react-native-calendars";
-import { styles, theme } from "./style";
-import { useState } from "react";
+import { Alert, Text, View } from "react-native";
+import { Calendar, LocaleConfig } from "react-native-calendars";
 import { Picker } from "@react-native-picker/picker";
+import { useBooking } from "@/hooks/useBooking";
+import api from "@/constants/api";
+import { ptBR } from "@/constants/calendar";
 import { Button } from "@/components/button";
+import { styles, theme } from "./style";
 
 LocaleConfig.locales["pt-BR"] = ptBR;
 LocaleConfig.defaultLocale = "pt-BR";
 
-export function Schedule({ route }: any) {
-  const [day, setDay] = useState<DateData>()
-  const [hour, setHour] = useState('')
-  const id_doctor = route.params.id_doctor
-  const id_service = route.params.id_doctor
-
-
-  function handleClick() {
-    console.log(id_doctor, id_service, day, hour)
-  }
+export function Schedule({ navigation, route }: any) {
+  const { id_doctor, id_service } = route.params
+  const {
+    selectedDate,
+    setSelectedDate,
+    selectedHour,
+    setSelectedHour,
+    confirmBooking,
+  } = useBooking(navigation);
 
   return (
     <View style={styles.container}>
       <Calendar
         theme={theme}
         style={styles.calendar}
-        onDayPress={setDay => {
-          console.log('selected day', setDay);
-        }}
-        markedDates={day && {
-          [day.dateString]: { selected: true }
-        }}
-        minDate={new Date().toDateString()}
+        onDayPress={(day) => { setSelectedDate(day.dateString) }}
+        markedDates={{ [selectedDate]: { selected: true } }}
+        minDate={new Date().toDateString().split("T")[0]}
       />
 
       <View style={styles.content}>
         <View>
           <Text style={styles.textLabel}>Horário</Text>
           <Picker
-            selectedValue={hour}
-            onValueChange={(value, index) => { setHour(value) }}
+            selectedValue={selectedHour}
+            onValueChange={(value) => { setSelectedHour(value) }}
             style={styles.picker}
           >
             <Picker.Item label="09:00" value="09:00" />
@@ -49,7 +45,10 @@ export function Schedule({ route }: any) {
         </View>
 
         <View>
-          <Button text="Confirmar reserva" onPress={handleClick} />
+          <Button
+            text="Confirmar reserva"
+            onPress={() => confirmBooking(id_doctor, id_service)}
+          />
         </View>
       </View>
     </View>
