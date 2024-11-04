@@ -1,5 +1,5 @@
-import { color, text } from "@/constants/theme";
 import { StyleSheet } from "react-native";
+import { color, text } from "@/constants/theme";
 
 export const styles = StyleSheet.create({
   container: {
@@ -9,7 +9,8 @@ export const styles = StyleSheet.create({
   banner: {
     backgroundColor: color.primary,
     alignItems: "center",
-    paddingVertical: 36,
+    paddingBottom: 36,
+    paddingTop: 18,
   },
   icon: {
     height: 80,

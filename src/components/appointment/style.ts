@@ -1,4 +1,3 @@
-import { appointments } from "@/constants/data";
 import { color, text } from "@/constants/theme";
 import { StyleSheet } from "react-native";
 
